@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const WorkerRequestSchema = new mongoose.Schema(
   {
-    account_id: { unique: true },
+    account_id: { type: Number, unique: true },
     // ------------------------------------------------------------------------------------------------------------------
     // item_request_category & item_request_detail set to "true" in Phase 1. When text/image feature is launched, to deactivate to "false"
     // *** check with team whether want to limit to 3 items ***
@@ -71,7 +71,7 @@ const WorkerRequestSchema = new mongoose.Schema(
       },
     ],
     item_text_request: { type: String },
-    item_image_request: { data: Buffer, contentType: String },
+    item_photo_request: { data: Buffer, contentType: String },
     item_delivery: {
       type: String,
       required: true,
