@@ -219,6 +219,7 @@ select {
   .header-titleText {
     font-size: var(--titleText);
     font-weight: 700;
+    line-height: 32px;
 
     flex: 1;
   }
