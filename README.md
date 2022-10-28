@@ -17,24 +17,29 @@ Displayed below is the structure of the application.
 ```
 --> Root (/)
     |--> Language Select (/language-select)
+
     |--> Login (/login)
+
     |--> Account Creation (/create-account)
          |--> User Account Creation - Generic account creation, tags the type of account (i.e. migrant worker, donor or volunteer)
          |--> Profile Creation - Only for migrant workers, to facilitate delivery of items
+
     |--> Home (/home)
-         |--> Homepage - Separate views for migrant workers and donors
+         |--> Home Page - Separate views for migrant workers and donors
+              |--> Donate Home Page - Modals components (donate information)
+              |--> Migrant Worker Home Page - Modal for instructions on requesting items
          |--> Application - Separate views for migrant workers and donors
+              |--> Donate Application - Overview of items donated through image and texts
+                   |--> Donate Application Card - Users will be able to see all their donated items by fetching the data from the backend. Users can delete specific item data in the Backend through the DELETE method. Subsequently mapping and displaying the data through text and photo.
 
     |--> Donate (/donate)
-         |--> Donate homepage
-              |--> Modals components (donate information)
          |--> Donate dashboard
               |--> Item status information (modal)
               |--> Donate top 4 Category component - map and display donate categories (dynamic dataset)
               |--> In-need of item Card (dynamic dataset with sorting functionality)
               |--> How to donate instruction (modal)
          |--> Donate location selection
-              |--> Navbar (Donate items) 
+              |--> Navbar (Donate items)
               |--> Drop Menu Area selection (select NSEW states)
               |--> Maps NSEW (pick location to drop off items, and filter volunteer data to areas)
                    |--> Drop off information - Map and display filtered volunteer information such as available time and contact details (dynamic dataset)
@@ -45,9 +50,6 @@ Displayed below is the structure of the application.
               |--> Donate Item Description - Create backend data through POST method. Users will define item details through onclick buttons which set the states for required body values.
                    |--> Upload photo - Currently hardcoded the photo upload to pull specific images from imgur, based on what user has selected.
          |--> Donate confirmation - Page to confirm submission, as well as option to donate a new item or view overall application.
-         |--> Donate Application - Overview of items donated through image and texts
-              |--> Donate Application Card - Users will be able to see all their donated items by fetching the data from the backend. Users can delete specific item data in the Backend through the DELETE method. Subsequently mapping and displaying the data through text and photo.
-
 
     |--> Item Request (/item-request)
          |--> Item Category
@@ -80,7 +82,7 @@ Displayed below is the structure of the application.
 
    - **Donor Account Creation**
 
-     - <Shawn to fill up>
+     - Only consists of User Account Creation
 
    - **Migrant Worker Account Creation**
 
@@ -99,46 +101,85 @@ Displayed below is the structure of the application.
 
 4. **Home Page**
 
+   - **Donate Home Page**
+     - Options for donors to click on donate button to proceed with donation process
+     - Selection of an option will bring up modals to thank and provide donation info
+
 5. **Donation Request**
 
-   - **Donate home page**
-     - Options for donors to click on donate button to proceed with donation process
-     - Selection of an option will bring up modals to thank and provide donation info.
-     
    - **Donate Donate dashboard**
-     - Options for donors to click on item category to donate. The top 4 categories are dynamic and mapped through a dataset that can be modified based on requirement. 
+
+     - Options for donors to click on item category to donate. The top 4 categories are dynamic and mapped through a dataset that can be modified based on requirement.
      - A clear card shows the items that are currently low in quantity and are in high demand. Sorted based on status. This card is also dynamic and mapped through a dataset that can be modified based on requirement. If an item has low quantity, the color changes accordingly during display.
-     - An information icon that can be clicked to provide users with more information on what the status of items mean (through modal) 
+     - An information icon that can be clicked to provide users with more information on what the status of items mean (through modal)
 
    - **Donate Location**
-     - Users are directed to choose the location to donate their items to (NSEW) via a drop down option menu. Upon selection of area, this will filter volunteer data to the specific areas 
+
+     - Users are directed to choose the location to donate their items to (NSEW) via a drop down option menu. Upon selection of area, this will filter volunteer data to the specific areas
      - Visual Maps with clickable location pins will appear for users to choose
      - Drop off information - Volunteer information will be filtered, mapped and displayed. This will include dynamic data such as available time and contact details.
-     -  All required fields must be selected before the users are able to proceed to the next page
-     
-   - **Donate items step 1**
+     - All required fields must be selected before the users are able to proceed to the next page
+
+   - **Donate Items Step 1**
+
      - Once the location and drop off details are confirmed, users will be directed to the donate items step 1 page where users will select a generic category of items they wish to donate (generic layer). This is displayed in a grid format and is dynamic and not hardcoded, allowing the team to change the categories more easily in the future. All required fields must be selected before the users are able to proceed to the next page.
 
-   - **Donate items step 2**
+   - **Donate Items Step 2**
+
      - Once the generic category has been chosen, users will now be directed to the second layer of selection to choose a more specific item to donate (detailed layer). This new category is filtered data based on Donate Items 1 selection, mapped and displayed accordingly in a grid format.
-     - Upon selecting the detailed category,  users will be directed to a new page (component) to select item details through onclick buttons which set the states for required body values that create backend data through POST method.
+     - Upon selecting the detailed category, users will be directed to a new page (component) to select item details through onclick buttons which set the states for required body values that create backend data through POST method.
      - Users can also choose to upload photo of the items. Currently hardcoded the photo upload to pull specific images from imgur, based on what user has selected.
-     
-   - **Donate confirmation**
+
+   - **Donate Confirmation**
+
      - Once the user submits the application, they will be directed to a page to confirm submission, as well as option to donate a new item or view overall application.
-     
+
    - **Donate Application**
+
      - Finally in the donate application tab/page, users get an overview of the donated items pending review through images and texts. This is displayed through a Donate Application Card. The Donate Application Card will fetch the data from the backend. Users can also delete specific item data in the Backend through the DELETE method. Subsequently mapping and displaying the data through text and photo.
 
 6. **Item Request**
 
+- **Item Application**
+
+  - A pre-set list of categories is available for users to select. Selection will present specific items for the user to add to their cart
+  - A text input field is included as an option for users to use in the event they are unable to find the requested item amongst the pre-set list of items
+  - In the event the user is unable to find the item within the pre-set list and is unable to adequately describe the item in the text input field, a photo upload option is available for them to upload a photo representing the item they would like to request for
+
+- **Item Cart**
+
+  - Displays the requested items as individual cards, along with the estimated waiting time for the item
+  - Edit and Delete options are available for each card
+  - An `Add Another` button is included for users to return to the Item Application page to add another item
+  - Up to three items can be added to cart (or depending on the remaining number of requests left for the user) and the `Add Another` button will be removed when the limit is reached
+  - The `Proceed to Delivery` button will navigate to the Delivery Method page
+
+- **Delivery Method**
+
+  - Includes a summary of requested items and their wait times
+  - Last page for users to delete items from their cart before checking out
+  - Users can select either delivery or self-pickup
+  - The `Next` button will navigate to the confirmation page
+
+- **Confirmation**
+
+  - Includes a summary of requested items and their wait times
+  - For a delivery option, the user's details will be populated from their profile (users will still be able to edit the information if they so wish to)
+  - For a self-pickup option, IRR's warehouse address will be populated
+  - The `Confirm & Apply` button will submit the item requests and if successful, navigate to the Success Page
+
+- **Success**
+
+  - Informs the user that their item application has been submitted
+  - Users can then navigate to the Applications page to view all their item requests or return to the Item Application page to start a new application
+
 ## Potential Future Implementations
 
-- **<Something>**
-- **<Something>**
-- **<Something>**
+- **Interactive Map for Donor Location Selection**
+- **Photo Upload for Item Donations and Item Requests**
+- **Volunteer Workflows**
 
 ## Issues Faced
 
-- **<Something>**
-- **<Something>**
+- Many repeated components (code is not DRY)
+- No standardised implementation of certain features
