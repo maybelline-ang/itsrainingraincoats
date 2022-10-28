@@ -173,6 +173,34 @@ Displayed below is the structure of the application.
   - Informs the user that their item application has been submitted
   - Users can then navigate to the Applications page to view all their item requests or return to the Item Application page to start a new application
 
+## Back-end (Server)
+
+The backend repository used for this project can be found at [its-raining-raincoat-backend]( https://github.com/maybelline-ang/its-raining-raincoat-backend). The technologies used for the backend are: Node.js, Express, MongoDB & Atlas, Mongoose, UUID, and Bcrypt.
+
+### Back-end Repository Structure
+
+- `server.js` is the entry point to our application, it defines our express server
+- `db/db.js` connects our application to our MongoDB Atlas database 
+- `routes/` contains the route definitions for our API
+- `controllers/` contains the controller definitions used in our routes
+- `models/` contains the schema definitions for our Mongoose models 
+
+### Routes
+
+There are 4 files in the `routes/` folder. Each file contains route definitions to Create, Read, Update, Delete (CRUD) different aspects of the application.
+- `donateItem.js` to CRUD donated items selected by the Donor persona. The controllers used are defined in `controllers/donateItem.js`
+- `itemRequestRouter.js` to CRUD the requested items selected by the Worker persona. The controllers used are defined in `controllers/itemRequestController.js`
+- `userRouter.js` to create and to login user accounts (includes both Worker and Donor persona). The controllers used are defined in `controllers/userController.js`
+- `workerProfileRouter.js` to CRUD the accounts and profiles for the Worker persona. The controllers used are defined in `controllers/workerProfileController.js`
+
+### Models
+
+There are 4 models in the `models/` folder. Each file contains Mongoose schema definitions.
+- `DonateItems.js` for creating a new donated item, with details filled in by the Donor persona
+- `ItemRequest.js` for creating a new requested item, with details filled in by the Worker persona
+- `Users.js` for creating a new user account (includes both Donor and Worker accounts)
+- `WorkerProfiles.js` for creating a new worker profile, taking in details filled in when a worker creates an account
+
 ## Potential Future Implementations
 
 - **Interactive Map for Donor Location Selection**
